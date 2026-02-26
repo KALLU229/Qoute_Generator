@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Quote Generator</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- OLD CSS (unchanged) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}">
+</head>
+
+<body>
+
+  <!-- Background Orbs -->
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <main class="container">
+
+    <!-- Hero -->
+    <header class="hero">
+      <h1 class="heading">AI Quote Generator</h1>
+      <p class="subtitle">
+        Generate motivational quotes instantly using AI.
+      </p>
+    </header>
+
+    <!-- Card -->
+    <section class="card">
+
+      <!-- Form -->
+      <form method="POST">
+
+        <div class="input-group">
+          <label class="input-label" for="category">
+            Quote Category
+          </label>
+
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="category"
+              name="category"
+              class="input-field"
+              placeholder="e.g. success, love, resilience..."
+              required
+            >
+          </div>
+        </div>
+
+        <button type="submit" class="btn-generate">
+          <span class="btn-label">Generate Quote</span>
+          <span class="btn-arrow">→</span>
+        </button>
+
+      </form>
+
+      <!-- Quote Output -->
+      <div class="quote-box {% if quote %}visible{% endif %}">
+        <div class="quote-mark open">"</div>
+
+        <p class="quote-text">
+          {% if quote %}
+            {{ quote }}
+          {% else %}
+            Your generated quote will appear here.
+          {% endif %}
+        </p>
+
+        <div class="quote-mark close">"</div>
+
+        <div class="quote-meta">
+          — AI Quote Generator
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="footer">
+      <p>Crafted with care · Made By KALLUDON</p>
+    </footer>
+
+  </main>
+
+</body>
+</html>
